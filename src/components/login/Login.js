@@ -1,7 +1,16 @@
-import React from 'react'
+import {useState} from 'react'
 import './Logis.scss'
 import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai';
 const Login = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePassword = () =>{
+        setShowPassword(!showPassword);
+    }
+
+
+
   return (
     <section className='login --center-all'>
         <div className="--card --bg-light">
@@ -9,9 +18,9 @@ const Login = () => {
             <div className="--form-control">
                   <input type="text" placeholder='Username' className='--width-100'/>
             <div className="password">
-                <input type="password" placeholder='Password' className='--width-100'/>
-                <div className="icon">
-                    <AiOutlineEye/>
+                <input type={showPassword ? 'text' : 'password'} placeholder='Password' className='--width-100'/>
+                <div className="icon" onClick={togglePassword}>
+                   { showPassword ? <AiOutlineEyeInvisible/> :  <AiOutlineEye/>}
                 </div>
              </div>
              <button className='--btn --btn-danger --btn-block'>Login</button>

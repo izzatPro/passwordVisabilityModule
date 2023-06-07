@@ -1,13 +1,13 @@
 import "./App.scss";
-import Login from "./components/login/Login";
+import Login from './components/login/Login'
 
 
 const App = () =>{
 
   return (
-    <div>
+   <div>
       <Login/>
-    </div>
+   </div>
   )
 }
 export default App;

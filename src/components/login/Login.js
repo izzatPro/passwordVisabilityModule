@@ -1,33 +1,34 @@
 import {useState} from 'react'
-import './Logis.scss'
+import './Login.scss'
 import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai';
+
 const Login = () => {
 
-    const [showPassword, setShowPassword] = useState(false);
-
-    const togglePassword = () =>{
-        setShowPassword(!showPassword);
+    const [passVisable , setPassVisable] = useState(false);
+    const togglePassVisable = () =>{
+        setPassVisable(!passVisable);
+    }
+    const [text,setText] = useState('Login');
+    const changeLogin = (e) =>{
+        setText(state => e.target.value)
     }
 
-
-
   return (
-    <section className='login --center-all'>
-        <div className="--card --bg-light">
-            <h2 className='--color-danger'>Login</h2>
-            <div className="--form-control">
-                  <input type="text" placeholder='Username' className='--width-100'/>
-            <div className="password">
-                <input type={showPassword ? 'text' : 'password'} placeholder='Password' className='--width-100'/>
-                <div className="icon" onClick={togglePassword}>
-                   { showPassword ? <AiOutlineEyeInvisible/> :  <AiOutlineEye/>}
-                </div>
-             </div>
-             <button className='--btn --btn-danger --btn-block'>Login</button>
-            </div>
-
+    <section className="login">
+    <div className="wrapper-login">
+      <h1>{text}</h1>
+      <div className="form-input">
+        <input type="text" placeholder="Username" className="Username" onChange={changeLogin}/>
+        <div className="password">
+          <input type={passVisable ? 'text' : 'password'} placeholder="Password" />
+          <div className="icon" onClick={togglePassVisable}>
+            {passVisable ? <AiOutlineEye/> : <AiOutlineEyeInvisible/>}
+          </div>
         </div>
-    </section>
+        <button>Login</button>
+      </div>
+    </div>
+  </section>
   )
 }
 
